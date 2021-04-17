@@ -34,5 +34,5 @@ jobs:
         run: |
           POETRY_VENV=$(ls -td /home/runner/.cache/pypoetry/virtualenvs/*/ | head -1)
           source $POETRY_VENV/bin/activate
-          pylint apps/ helpers/ --rcfile ./.pylintrc
+          pylint app/ helpers/ --rcfile ./.pylintrc
 
