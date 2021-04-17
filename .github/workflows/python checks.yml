@@ -1,0 +1,37 @@
+on: [push]
+
+name: Python Code Checks
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    
+    strate
+      matrix:
+        python-version: [3.9]
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    
+    - name: Install dependencies
+      run: |
+        pip install poetry
+        poetry install
+        poetry show -v
+        
+    - name: Flake8
+      run: |
+        POETRY_VENV=$(ls -td /home/runner/.cache/pypoetry/virtualenvs/*/ | head -1)
+        source $POETRY_VENV/bin/activate
+        flake8 app/ helpers/
+
+    - name: PyLint
+      run: |
+        POETRY_VENV=$(ls -td /home/runner/.cache/pypoetry/virtualenvs/*/ | head -1)
+        source $POETRY_VENV/bin/activate
+        pylint --rcfile ./.pylintrc app/ helpers/

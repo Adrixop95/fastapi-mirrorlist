@@ -40,6 +40,8 @@ services:
             - traefik.http.routers.fastapi-proxy.entrypoints=web-secure
             - traefik.http.routers.fastapi-proxy.tls=true
             - traefik.http.routers.fastapi-proxy.tls.certresolver=letsencrypt
+        volumes:
+            - "/var/run/docker.sock:/var/run/docker.sock:ro"
         networks:
             - fastapi_proxy
         restart: unless-stopped
