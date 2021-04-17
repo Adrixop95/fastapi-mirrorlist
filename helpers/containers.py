@@ -19,9 +19,11 @@ def get_host_from_traefik():
         # if container have host definition in labels
         for key, value in container_from_id.items():
             if value.startswith('Host'):
-                # regex stuff to filfer hostname
+                # regex stuff to filter hostname
                 host_find_brackets = re.findall(r"\(.*?\)", value)[0]
                 host_remove_quotes = re.sub("[(')]", '', host_find_brackets)[1:-1]
-                container_hosts.append(host_remove_quotes)
+                # lazy check, because I don't want to check the current host with fastapi
+                if "nginx" in host_remove_quotes:
+                    container_hosts.append(host_remove_quotes)
 
     return container_hosts

@@ -6,14 +6,14 @@ app = FastAPI()
 
 
 @app.get("/", response_class=PlainTextResponse)
-async def root(package: str = "", release: str = ""):
+async def root(release: str = "", repo: str = "", arch: str = "x86_64"):
 
     final_url = ""
 
-    if package and release:
+    if repo and release:
 
-        for hostname in get_host_from_traefik():
-            nginx_url = "http://" + hostname + "/public/" + release + "/" + package
+        for traefik_url in get_host_from_traefik():
+            nginx_url = "http://" + traefik_url + "/public/" + release + "/" + arch + "/" + repo
 
             # Here you should check if a given URl exists, then add it to the list, code:
             # import requests
