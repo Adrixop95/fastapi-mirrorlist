@@ -33,6 +33,9 @@ services:
         build:
             dockerfile: Dockerfile
             context: .
+        environment:
+            - traefik_hosts=True
+            - provided_hosts=centos.hitme.net.pl,centos.slaskdatacenter.com
         labels:
             - traefik.enable=true
             - traefik.http.routers.fastapi-proxy.rule=Host(`fastapi.localhost`)

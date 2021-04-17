@@ -13,6 +13,7 @@ requests = "^2.25.1"
 docker = "^5.0.0"
 flake8 = "^3.9.1"
 pylint = "^2.7.4"
+python-dotenv = "^0.17.0"
 
 [tool.poetry.dev-dependencies]
 
