@@ -40,7 +40,7 @@ jobs:
     name: Build and publish container
     needs: code_checks
     runs-on: ubuntu-20.04
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/main'
     steps:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -68,7 +68,7 @@ jobs:
     name: Scan latest container
     needs: build_container
     runs-on: ubuntu-20.04
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/main'
     steps:
       - uses: azure/container-scan@v0
         with:
