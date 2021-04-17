@@ -13,9 +13,10 @@ async def root(release: str = "", repo: str = "", arch: str = "x86_64"):
     if repo and release:
 
         for traefik_url in get_host_from_traefik():
-            nginx_url = "http://" + traefik_url + "/public/" + release + "/" + arch + "/" + repo
+            # not the best way to generate url, ikr
+            nginx_url = "http://" + traefik_url + "/" + release + "/" + repo + "/" + arch + "/os/"
 
-            # Here you should check if a given URl exists, then add it to the list, code:
+            # Here you should check if a given URl exists, then add it to the list, eg code:
             # import requests
             # nginx_request = requests.get(nginx_url, stream=True, verify=False)
             #     if nginx_request.status_code == 200:
