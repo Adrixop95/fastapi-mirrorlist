@@ -1,11 +1,11 @@
 [tool.poetry]
-name = "fastapi-proxy"
+name = "fastapi-mirrorlist"
 version = "0.1.0"
-description = ""
+description = "Simple mirrorlist for Centos"
 authors = ["adrixop95 <adrixop95@me.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.8"
 fastapi = "^0.63.0"
 uvicorn = {extras = ["standard"], version = "^0.13.4"}
 gunicorn = "^20.1.0"

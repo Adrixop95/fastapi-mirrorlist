@@ -24,7 +24,7 @@ async def root(release: str = "", repo: str = "", arch: str = "x86_64"):
 
     # If traefik_hosts is true from env, add host to list
     if ast.literal_eval(traefik_hosts):
-       url_list.extend(get_host_from_traefik())
+        url_list.extend(get_host_from_traefik())
 
     # If repo and release are specified in the request,
     # iterate through all URLs,
