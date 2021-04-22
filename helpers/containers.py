@@ -1,3 +1,5 @@
+# Example; crappy script
+# Sample script that allows you to automatically generate a URL based on a Traefik v2 label.
 import re
 import docker
 
