@@ -2,10 +2,10 @@ import re
 import docker
 
 
-def add_to_list(list, string):
+def add_to_list(lst, string):
     string += '{0}'
-    list = [string.format(i) for i in list]
-    return list
+    lst = [string.format(i) for i in lst]
+    return lst
 
 
 def get_host_from_traefik():
