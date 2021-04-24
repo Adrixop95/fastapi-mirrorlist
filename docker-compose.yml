@@ -70,11 +70,26 @@ services:
             context: nginx/.
         labels:
             - traefik.enable=true
-            - traefik.http.routers.nginx2.rule=Host(`nginx2.localhost`)
+            - traefik.http.routers.nginx2.rule=Host(`nginx2.localhost`) && PathPrefix (`/test`)
             - traefik.http.services.nginx2.loadbalancer.server.port=80
             - traefik.http.routers.nginx2.entrypoints=web-secure
             - traefik.http.routers.nginx2.tls=true
             - traefik.http.routers.nginx2.tls.certresolver=letsencrypt
+        networks:
+            - fastapi_proxy
+        restart: unless-stopped
+
+    nginx3:
+        build:
+            dockerfile: Dockerfile
+            context: nginx/.
+        labels:
+            - traefik.enable=true
+            - traefik.http.routers.nginx3.rule=Host(`nginx3.localhost`) && PathPrefix (`/test/testowy`,`/test2`,`/test3`)
+            - traefik.http.services.nginx3.loadbalancer.server.port=80
+            - traefik.http.routers.nginx3.entrypoints=web-secure
+            - traefik.http.routers.nginx3.tls=true
+            - traefik.http.routers.nginx3.tls.certresolver=letsencrypt
         networks:
             - fastapi_proxy
         restart: unless-stopped

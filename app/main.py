@@ -6,7 +6,7 @@ from fastapi import FastAPI
 from fastapi.responses import PlainTextResponse
 from dotenv import load_dotenv
 
-from helpers.containers import get_host_from_traefik
+from helpers.traefik_labels import get_host_from_traefik
 
 app = FastAPI()
 load_dotenv(verbose=True)
